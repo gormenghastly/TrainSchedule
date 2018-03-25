@@ -1,0 +1,10 @@
+body {
+  background: url('../images/nightSF.jpg');
+  color: black;
+}
+#opacity {
+  opacity: 0.5;
+}
+#opacity-input {
+  opacity: 0.75;
+}

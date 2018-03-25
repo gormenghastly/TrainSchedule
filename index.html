@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Train Schedule</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.css" integrity="sha256-lJMsOpLg+Hdzs297wkRxAhSlJdXcuHHyo/JoB4uI7uw="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="assets/css/custom.css" />
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card deep-orange lighten-4" id="opacity">
+                    <div class="card-content black-text">
+                        <h3 class="center-align">always on time...</h3>
+                        <h3 class="right-align">Train Schedule</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card orange lighten-3">
+                    <table class="bordered centered responsive">
+                        <thead>
+                            <tr>
+                                <th>name</th>
+                                <th>destination</th>
+                                <th>frequency</th>
+                                <th>next arrival</th>
+                                <th>minutes away</th>
+                            </tr>
+                        </thead>
+                        <tbody id="train-table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="card red" id="opacity-input">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="" id="train-name" type="text" class="validate">
+                            <label for="train-name" class="black-text">train name</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input placeholder="" id="destination" type="text" class="validate">
+                            <label for="destination">destination</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="HHMM military time" id="first-time" type="text" class="validate">
+                            <label for="first-time">first train time</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input placeholder="minutes" id="frequency" type="text" class="validate">
+                            <label for="frequency">frequency</label>
+                        </div>
+                    </div>
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                </div>
+        </div>
+        </form>
+
+
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js" integrity="sha256-9wM2SPsbZp8aQ0KHzSeg+KsAYGtc7GRTombqhhXvLSg="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js" integrity="sha256-Cxf2osSjVdgIUDXd8CR70LjMnQD0TA908QL1v00EtMY="
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script type="text" src="assets/javascript/logic.js"></script>
+</body>
+
+</html>
