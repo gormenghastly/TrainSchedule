@@ -11,6 +11,14 @@
         crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Limelight">
 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js" integrity="sha256-9wM2SPsbZp8aQ0KHzSeg+KsAYGtc7GRTombqhhXvLSg="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js" integrity="sha256-Cxf2osSjVdgIUDXd8CR70LjMnQD0TA908QL1v00EtMY="
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script type="text" src="assets/javascript/logic.js"></script>
     <link rel="stylesheet" href="assets/css/custom.css" />
 
 
@@ -50,13 +58,7 @@
         <div class="row">
             <form class="col s12">
                 <div class="card" id="opacity-input">
-                    <div class="row">
-                        <div class="col s12">
-                            <button class="btn waves-effect waves-light orange lighten-3 black-text" type="submit" name="action" id="submit">
-                                <h5>add a train</h5>
-                            </button>
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="input-field col s6">
                             <input placeholder="The Super Chief" id="train-name" type="text" class="validate">
@@ -79,23 +81,25 @@
                             <label for="frequency" class="black-text">frequency</label>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <button id="submit" class="btn waves-effect waves-light orange lighten-3 black-text" type="submit" name="action">
+                                <h5>add a train</h5>
+                            </button>
+                        </div>
+                    </div>
 
                 </div>
+            </form>
+
+
         </div>
-        </form>
-
-
     </div>
-    </div>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js" integrity="sha256-9wM2SPsbZp8aQ0KHzSeg+KsAYGtc7GRTombqhhXvLSg="
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.js" integrity="sha256-Cxf2osSjVdgIUDXd8CR70LjMnQD0TA908QL1v00EtMY="
-        crossorigin="anonymous"></script>
-    <script type="text" src="assets/javascript/logic.js"></script>
+
+
+
 </body>
 
 </html>

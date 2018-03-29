@@ -1,4 +1,6 @@
 
+$(document).ready(function() {
+
  // Initialize Firebase
  var config = {
   apiKey: "AIzaSyCwviyjqISHB7J3L0tRB4nMLmIKJAKDz6k",
@@ -12,14 +14,14 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-$(document).ready(function() {
+
   var newName = '';
   var newDest = '';
   var newStart = 0;
   var newFreq = 0;
 
   //capture button click
-  $(document).on('click', '#submit', function(event) {
+  $('#submit').on('click', function(event) {
     event.preventDefault();
 
     //grab user input
@@ -40,17 +42,19 @@ $(document).ready(function() {
       .trim();
 
     //variable for storing user input
-    var newTrain = {
+    console.log(newName);
+    console.log(newDest);
+    console.log(newStart);
+    console.log(newFreq);
+
+    //push data to database
+    database.ref().push( {
       trainName: newName,
       trainDest: newDest,
       trainStart: newStart,
-      trainFreq: newFreq
-    };
-
-    //push data to database
-    database.ref().push({
-      newTrain
+      trainFreq: newFreq 
     });
+
 
 
   });
@@ -64,7 +68,6 @@ $(document).ready(function() {
       console.log(childSnapshot.val().trainDest);
       console.log(childSnapshot.val().trainStart);
       console.log(childSnapshot.val().trainFreq);
-      console.log(childSnapshot.val().joinDate);
 
         //variable for train frequency
   var frequency = childSnapshot.val().trainFreq;
@@ -105,5 +108,4 @@ $(document).ready(function() {
       console.log('Errors handled: ' + errorObject.code);
     }
   );
-  
 });
