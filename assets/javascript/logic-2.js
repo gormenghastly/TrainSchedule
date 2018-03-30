@@ -12,6 +12,8 @@ $(document).ready(function() {
 
   var database = firebase.database();
 
+  console.log('hello?');
+
   var newName = '';
   var newDest = '';
   var newStart = 0;
