@@ -12,17 +12,19 @@ $(document).ready(function() {
 
   var database = firebase.database();
 
-  console.log('hello?');
-
   var newName = '';
   var newDest = '';
   var newStart = 0;
   var newFreq = 0;
 
+  console.log('hello');
+
   //capture button click
   $('#submit').on('click', function(event) {
     event.preventDefault();
-
+    var firstTime = $('#first-time')
+      .val()
+      .trim();
     //grab user input
     newName = $('#train-name')
       .val()
@@ -30,21 +32,18 @@ $(document).ready(function() {
     newDest = $('#destination')
       .val()
       .trim();
-    newStart = moment(
-      $('#first-time')
-        .val()
-        .trim(),
-      'HH:mm'
-    ).format('X');
+    newStart = $('#first-time')
+      .val()
+      .trim();
     newFreq = $('#frequency')
       .val()
       .trim();
 
     //variable for storing user input
-    console.log(newName);
-    console.log(newDest);
-    console.log(newStart);
-    console.log(newFreq);
+    console.log('New Name: ', newName);
+    console.log('New Dest ', newDest);
+    console.log('New start: ', newStart);
+    console.log('New freq: ', newFreq);
 
     //push data to database
     database.ref().push({
@@ -60,32 +59,31 @@ $(document).ready(function() {
     'child_added',
     function(childSnapshot) {
       //log all data coming from snapshot
-      console.log(childSnapshot.val().trainName);
-      console.log(childSnapshot.val().trainDest);
-      console.log(childSnapshot.val().trainStart);
-      console.log(childSnapshot.val().trainFreq);
+      console.log('Train Name: ', childSnapshot.val().trainName);
+      console.log('Train Destination: ', childSnapshot.val().trainDest);
+      console.log('Train Start: ', childSnapshot.val().trainStart);
+      console.log('Frequency: ', childSnapshot.val().trainFreq);
 
       //variable for train frequency
       var frequency = childSnapshot.val().trainFreq;
 
       //variable for first train
-      var startTime = childSnapshot.val().trainStart;
-
-      //push back first train 1 yr so it comes before current time
-      var startTimeConverted = moment(startTime, 'HH:mm').subtract(1, 'years');
-      console.log(startTimeConverted);
+      var startTime = moment(childSnapshot.val().trainStart, 'HH:mm');
+      console.log('Start time: ', startTime.format('HH:mm'));
 
       //current time
       var currentTime = moment();
-      console.log('current time: ' + moment(currentTime).format('hh:mm'));
+      console.log('current time: ' + currentTime.format('HH:mm'));
 
-      //difference between current and converted
-      var diffTime = moment().diff(moment(startTimeConverted), 'minutes');
-      console.log('difference in time: ' + diffTime);
+      if (currentTime.isBefore(startTime)) currentTime.add(1, 'day');
+
+      //difference between current and start time
+      var diffTime = moment.duration(currentTime.diff(startTime));
+      console.log('difference in time: ' + diffTime.asMinutes());
 
       //remainder of time apart
       var timeRemain = diffTime % frequency;
-      console.log(timeRemain);
+      console.log('Remaining time: ', timeRemain);
 
       //minutes till next train
       var minutesToTrain = frequency - timeRemain;
@@ -105,9 +103,9 @@ $(document).ready(function() {
           '</td><td>' +
           childSnapshot.val().trainFreq +
           '</td><td' +
-          minutesToTrain +
+          nextArrival.format('hh:mm') +
           '</td><td>' +
-          nextArrival +
+          minutesToTrain +
           '</td></tr>'
       );
       //handle the errors
